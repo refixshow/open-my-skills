@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session-check-engine/forms-draft-v1",
+  "title": "FORMS_DRAFT",
+  "$defs": {
+    "blankCoachResponse": {
+      "type": ["string", "null"],
+      "maxLength": 0
+    },
+    "coachReflectionItem": {
+      "type": "object",
+      "required": ["prompt", "response"],
+      "properties": {
+        "prompt": {"type": "string", "minLength": 1},
+        "response": {"$ref": "#/$defs/blankCoachResponse"}
+      },
+      "additionalProperties": false
+    },
+    "coachOutcomeItem": {
+      "type": "object",
+      "required": ["prompt", "response", "rating"],
+      "properties": {
+        "prompt": {"type": "string", "minLength": 1},
+        "response": {"$ref": "#/$defs/blankCoachResponse"},
+        "rating": {"enum": [null, "__/10"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "required": ["context_note", "client_observation", "coach_self_evaluation", "outcomes"],
+  "properties": {
+    "context_note": {"type": "string", "minLength": 1},
+    "client_observation": {
+      "type": "object",
+      "required": ["productivity", "persuasion", "psychology", "physiology", "presence", "purpose", "notes", "follow_up"],
+      "additionalProperties": false
+    },
+    "coach_self_evaluation": {
+      "type": "object",
+      "required": ["worked_best", "handled_well", "strongest_connection", "client_insight_signal", "more_value", "clearer_point", "enabling_question", "practice_behavior"],
+      "properties": {
+        "worked_best": {"$ref": "#/$defs/coachReflectionItem"},
+        "handled_well": {"$ref": "#/$defs/coachReflectionItem"},
+        "strongest_connection": {"$ref": "#/$defs/coachReflectionItem"},
+        "client_insight_signal": {"$ref": "#/$defs/coachReflectionItem"},
+        "more_value": {"$ref": "#/$defs/coachReflectionItem"},
+        "clearer_point": {"$ref": "#/$defs/coachReflectionItem"},
+        "enabling_question": {"$ref": "#/$defs/coachReflectionItem"},
+        "practice_behavior": {"$ref": "#/$defs/coachReflectionItem"}
+      },
+      "additionalProperties": false
+    },
+    "outcomes": {
+      "type": "object",
+      "required": ["clarity", "energy", "courage", "productivity", "influence"],
+      "properties": {
+        "clarity": {"$ref": "#/$defs/coachOutcomeItem"},
+        "energy": {"$ref": "#/$defs/coachOutcomeItem"},
+        "courage": {"$ref": "#/$defs/coachOutcomeItem"},
+        "productivity": {"$ref": "#/$defs/coachOutcomeItem"},
+        "influence": {"$ref": "#/$defs/coachOutcomeItem"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

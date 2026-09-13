@@ -1,0 +1,11 @@
+{
+  "doctor": {"state": "read-only", "reference": "references/doctor.md"},
+  "check-session": {"state": "review-or-development", "reference": "references/check-session.md"},
+  "hp-review": {"state": "review", "reference": "references/check-session.md"},
+  "tool-review": {"state": "review", "reference": "references/check-session.md"},
+  "forms": {"state": "review", "reference": "references/forms.md"},
+  "progress": {"state": "development", "reference": "references/progress-practice.md"},
+  "practice": {"state": "development", "reference": "references/progress-practice.md"},
+  "knowledge": {"state": "read-only", "reference": "references/knowledge-sources.md"},
+  "sources": {"state": "explicit-maintenance", "reference": "references/knowledge-sources.md"}
+}

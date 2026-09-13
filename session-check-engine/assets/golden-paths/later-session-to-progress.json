@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "id": "later-session-to-progress",
+  "trigger": "A later real-session transcript is supplied for longitudinal comparison.",
+  "steps": ["Review the new transcript without history labels.", "Freeze current findings.", "Read active focuses.", "Locate comparable opportunities.", "Persist a de-identified verdict and next behavior."],
+  "invariants": ["No comparable opportunity means insufficient_evidence.", "Only observable behaviors are tracked.", "At most three focuses remain active."],
+  "files": ["references/progress-practice.md", "scripts/development_log.py"]
+}

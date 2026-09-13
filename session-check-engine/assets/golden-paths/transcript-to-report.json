@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "id": "transcript-to-report",
+  "trigger": "A real coaching-session transcript is supplied without additional instructions.",
+  "steps": ["Run context preflight.", "Select one primary topic.", "Create and validate three independent lane payloads.", "Freeze HP_RESULT and gate tool candidates.", "Synthesize the combined report without persisting client material."],
+  "invariants": ["HP_RESULT is frozen before tool admission.", "The forms lane cannot alter either sieve.", "Coach-owned Self-Evaluation responses and ratings remain blank.", "No transcript or client identifier is stored."],
+  "files": ["SKILL.md", "references/check-session.md", "references/report-contract.md", "scripts/kernel.py"]
+}

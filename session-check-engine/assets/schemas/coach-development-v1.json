@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session-check-engine/coach-development-v1",
+  "title": "De-identified coach development log",
+  "type": "object",
+  "required": ["version", "tracking_enabled", "privacy", "focus_areas"],
+  "properties": {
+    "version": {"const": 1},
+    "tracking_enabled": {"type": "boolean"},
+    "privacy": {
+      "type": "object",
+      "required": ["stores_client_data", "rule"],
+      "properties": {"stores_client_data": {"const": false}, "rule": {"type": "string"}}
+    },
+    "focus_areas": {"type": "array", "items": {"type": "object"}}
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session Check Engine"
+  short_description: "Sprawdza i rozwija sesje coachingowe"
+  default_prompt: "Use $session-check-engine to review this coaching-session transcript."

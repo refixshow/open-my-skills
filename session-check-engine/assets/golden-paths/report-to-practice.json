@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "id": "report-to-practice",
+  "trigger": "A frozen review yields one to three behavioral practice priorities and tracking is enabled.",
+  "steps": ["Compare only after freezing the report.", "Reuse or create a de-identified focus.", "Store a complete 1-3 prompt drill.", "Present one prompt and wait.", "Persist advancement after feedback."],
+  "invariants": ["No client narrative is stored.", "Simulation does not prove real-session transfer.", "The user can stop immediately."],
+  "files": ["references/progress-practice.md", "scripts/development_log.py", "assets/schemas/coach-development-v1.json"]
+}

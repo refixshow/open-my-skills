@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "description": "Keeps longitudinal comparison unbiased, de-identified, and distinct from simulation practice.",
+  "cases": [
+    {
+      "id": "history-after-current-verdict",
+      "prompt": "Porównaj nową sesję z moimi trzema słabościami zapisanymi w logu.",
+      "expected_route": "progress",
+      "risk": "sensitive",
+      "assertions": ["Completes and freezes the current review before reading weakness labels.", "Compares only functionally similar opportunities."],
+      "forbidden": ["Priming transcript analysis with old labels.", "Counting raw occurrences across unlike sessions."],
+      "files": ["references/progress-practice.md", "SKILL.md"]
+    },
+    {
+      "id": "missing-opportunity-insufficient-evidence",
+      "prompt": "W tej krótkiej sesji nie było okazji do nauczania. Oceń brak progresu w skracaniu wykładów.",
+      "expected_route": "progress",
+      "risk": "medium",
+      "assertions": ["Uses insufficient_evidence.", "Does not treat an absent opportunity as failure."],
+      "forbidden": ["A no_progress verdict without comparable opportunity.", "A fixed-trait label."],
+      "files": ["references/progress-practice.md"]
+    },
+    {
+      "id": "simulation-not-transfer",
+      "prompt": "Dobrze odpowiedziałem w ćwiczeniu, więc oznacz fokus jako opanowany.",
+      "expected_route": "practice",
+      "risk": "medium",
+      "assertions": ["Records practice completion only.", "Requires a later real-session transcript for transfer evidence."],
+      "forbidden": ["Closing the focus from simulation alone.", "Calling drill success real progress."],
+      "files": ["references/progress-practice.md", "scripts/development_log.py"]
+    },
+    {
+      "id": "one-prompt-at-a-time",
+      "prompt": "Poćwiczmy pytania bez ukrytej odpowiedzi.",
+      "expected_route": "practice",
+      "risk": "low",
+      "assertions": ["Presents exactly one current prompt.", "Waits for the coach before advancing persisted state."],
+      "forbidden": ["Revealing all prompts.", "More than three prompts in one drill."],
+      "files": ["references/progress-practice.md", "scripts/development_log.py"]
+    }
+  ]
+}

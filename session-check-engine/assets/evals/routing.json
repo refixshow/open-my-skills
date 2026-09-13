@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "description": "Routes transcript, narrow review, knowledge, and readiness requests without needless questions.",
+  "cases": [
+    {
+      "id": "transcript-alone-full-check",
+      "prompt": "[Attached coaching-session transcript with no instruction]",
+      "expected_route": "check-session",
+      "risk": "sensitive",
+      "assertions": ["Treats the transcript itself as a complete request.", "Runs the full gated flow without asking what kind of review is wanted."],
+      "forbidden": ["A generic menu instead of analysis.", "Persisting the transcript."],
+      "files": ["SKILL.md", "references/check-session.md"]
+    },
+    {
+      "id": "hp-only-review",
+      "prompt": "Sprawdź tylko zgodność tej sesji klarowności z High Performance.",
+      "expected_route": "hp-review",
+      "risk": "medium",
+      "assertions": ["Loads one primary High Performance session card.", "Stops before generic tools and development tracking."],
+      "forbidden": ["Adding generic tools by default.", "Scoring memorized wording."],
+      "files": ["SKILL.md", "references/check-session.md"]
+    },
+    {
+      "id": "course-term-lookup",
+      "prompt": "Co dokładnie oznacza mindset w tym kursie?",
+      "expected_route": "knowledge",
+      "risk": "low",
+      "assertions": ["Loads the local definitions reference.", "Labels the answer as the instructor's methodology."],
+      "forbidden": ["Loading every session card.", "Claiming universal scientific validity."],
+      "files": ["references/knowledge-sources.md"]
+    },
+    {
+      "id": "no-input-doctor",
+      "prompt": "Co dalej z tym engine?",
+      "expected_route": "doctor",
+      "risk": "low",
+      "assertions": ["Runs a read-only readiness diagnostic.", "Recommends exact next commands."],
+      "forbidden": ["Inventing a transcript.", "Creating tracking state without opt-in."],
+      "files": ["references/doctor.md", "scripts/doctor.py"]
+    }
+  ]
+}

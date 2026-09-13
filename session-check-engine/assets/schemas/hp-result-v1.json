@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session-check-engine/hp-result-v1",
+  "title": "HP_RESULT",
+  "type": "object",
+  "required": ["topic", "topic_source", "topic_confidence", "transcript_reliability", "overall_verdict", "strengths", "findings", "topic_discipline", "safety_flags"],
+  "properties": {
+    "topic": {"type": "string", "minLength": 1},
+    "topic_source": {"enum": ["declared", "inferred", "not-applicable"]},
+    "topic_confidence": {"enum": ["low", "medium", "high"]},
+    "transcript_reliability": {"type": "string", "minLength": 1},
+    "overall_verdict": {"type": "string", "minLength": 1},
+    "strengths": {"type": "array", "minItems": 2, "maxItems": 4, "items": {"type": "string", "minLength": 1}},
+    "findings": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["moment", "observation", "interpretation", "source_basis", "priority", "confidence"],
+        "properties": {
+          "moment": {"type": "string", "minLength": 1},
+          "observation": {"type": "string", "minLength": 1},
+          "interpretation": {"type": "string", "minLength": 1},
+          "source_basis": {"type": "string", "minLength": 1},
+          "priority": {"enum": ["P1 - High Performance", "No action"]},
+          "confidence": {"enum": ["low", "medium", "high"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "topic_discipline": {"type": "string", "minLength": 1},
+    "safety_flags": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

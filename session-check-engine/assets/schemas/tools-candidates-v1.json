@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session-check-engine/tools-candidates-v1",
+  "title": "TOOLS_CANDIDATES",
+  "type": "array",
+  "maxItems": 5,
+  "items": {
+    "type": "object",
+    "required": ["id", "moment", "client_signal", "tool_id", "rationale", "intervention", "simpler_alternative", "source_basis", "confidence", "hp_dependency", "admission_test"],
+    "properties": {
+      "id": {"type": "string", "minLength": 1},
+      "moment": {"type": "string", "minLength": 1},
+      "client_signal": {"type": "string", "minLength": 1},
+      "tool_id": {"type": "string", "minLength": 1},
+      "rationale": {"type": "string", "minLength": 1},
+      "intervention": {"type": "string", "minLength": 1},
+      "simpler_alternative": {"type": "string", "minLength": 1},
+      "source_basis": {"type": "string", "minLength": 1},
+      "confidence": {"enum": ["low", "medium", "high"]},
+      "hp_dependency": {"type": "string", "minLength": 1},
+      "admission_test": {
+        "type": "object",
+        "required": ["explicit_signal", "serves_objective", "hp_ready", "brief_and_in_scope", "adds_value"],
+        "properties": {
+          "explicit_signal": {"type": "boolean"},
+          "serves_objective": {"type": "boolean"},
+          "hp_ready": {"type": "boolean"},
+          "brief_and_in_scope": {"type": "boolean"},
+          "adds_value": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": true
+  }
+}
